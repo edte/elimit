@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/go-echarts/go-echarts/v2 v2.2.4
 	go.uber.org/ratelimit v0.2.0
+	golang.org/x/time v0.0.0-20220722155302-e5dcc9cfc0b9
 )
 
 require (
