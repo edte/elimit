@@ -68,6 +68,7 @@ func (li *LimitLeakyBucket) Wait() {
 }
 
 // 异步限流
+// 先更新漏水情况，然后尝试加水
 func (li *LimitLeakyBucket) Allow() bool {
 	// [step 1] 获取当前时间
 	now := time.Now().UnixNano()

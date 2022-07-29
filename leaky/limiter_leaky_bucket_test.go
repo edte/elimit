@@ -20,7 +20,6 @@ func TestLimitLeakyBucket_Wait(t *testing.T) {
 	pre := time.Now()
 	for i := 0; i < 10000; i++ {
 		l.Wait()
-		// fmt.Println("##")
 		t := time.Now()
 		fmt.Println(t.Sub(pre))
 		pre = t
