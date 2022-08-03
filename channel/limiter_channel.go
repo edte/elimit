@@ -13,7 +13,7 @@ type limitChannel struct {
 	begin  time.Time     // 开始时间
 	circle time.Duration // 计数周期
 	ch     chan struct{} // 通道
-    mutex  sync.Mutex
+	mutex  sync.Mutex
 }
 
 func NewChannelLimit(c *config.Config) *limitChannel {
@@ -22,7 +22,7 @@ func NewChannelLimit(c *config.Config) *limitChannel {
 		begin:  time.Now(),
 		circle: c.Circle,
 		ch:     make(chan struct{}, c.Rate),
-        mutex: sync.Mutex{},
+		mutex:  sync.Mutex{},
 	}
 
 	fmt.Println(c.Circle)
@@ -35,11 +35,11 @@ func NewChannelLimit(c *config.Config) *limitChannel {
 			case <-t.C:
 				fmt.Println("clear channel ")
 
-                l.mutex.Lock()
+				l.mutex.Lock()
 				for i := 0; i < len(l.ch); i++ {
 					<-l.ch
 				}
-                l.mutex.Unlock()
+				l.mutex.Unlock()
 			}
 		}
 	}()
